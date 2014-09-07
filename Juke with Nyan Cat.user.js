@@ -1,9 +1,7 @@
 // ==UserScript==
 // @name          Juke with Nyan Cat
-// @namespace     Dr. Holmes
 // @description   Plays Nyan Cat when flag is grabbed
 // @include       http://tagpro-*.koalabeast.com*
-// @license       WTFPL
 // @author        Dr. Holmes
 // @version       2.2
 // ==/UserScript==

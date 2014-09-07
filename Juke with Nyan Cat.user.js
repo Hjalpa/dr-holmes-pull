@@ -35,11 +35,11 @@ function nyanSound() {
         
         
        		nyanCat.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
-        
-       		nyanCat.pause();
-        	nyanCat.load();
-        	nyanCat.play();
         };
+        
+       	nyanCat.pause();
+        nyanCat.load();
+        nyanCat.play();
     }
 }
  

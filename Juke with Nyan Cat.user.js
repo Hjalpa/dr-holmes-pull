@@ -19,7 +19,7 @@ colors = [
     ['yellow', '255, 255, 0'],
     ['green', '68, 122, 66'],
     ['lightGreen', '8, 255, 0'],
-   	['lightBlue', '0, 238, 255'],
+    ['lightBlue', '0, 238, 255'],
     ['blue', '34, 0, 255'],
     ['purple', '179, 0, 255'],
     ['pink', '255, 0, 217'],
@@ -65,12 +65,14 @@ function nyanSound() {
         var rand = Math.floor(Math.random() * (5));
         
         if (document.getElementById('soundMusic').getAttribute('class') !== 'off') {
-            musicth.pause();};
+            musicth.pause();
+        	
+        };
         
-       		  nyanCat.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
-            nyanCat.pause();
-        	  nyanCat.load();
-        	  nyanCat.play();
+      	nyanCat.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
+        nyanCat.pause();
+       	nyanCat.load();
+       	nyanCat.play();
     }
 }
  

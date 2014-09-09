@@ -65,12 +65,13 @@ function nyanSound() {
         var rand = Math.floor(Math.random() * (5));
         
         if (document.getElementById('soundMusic').getAttribute('class') !== 'off') {
-            musicth.pause();};
+            musicth.pause();
         
        		nyanCat.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
             nyanCat.pause();
         	nyanCat.load();
         	nyanCat.play();
+        };
     }
 }
  

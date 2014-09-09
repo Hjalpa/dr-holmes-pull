@@ -3,7 +3,7 @@
 // @description   Plays Nyan Cat when flag is grabbed
 // @include       http://tagpro-*.koalabeast.com*
 // @author        Dr. Holmes
-// @version       3.2
+// @version       3.3
 // ==/UserScript==
  
 nyanMusic = [
@@ -52,7 +52,8 @@ var backgroundCSS = {
     height:"100%",
     width:"100%",
     position:"fixed",
-    background:"rgba(0,0,0,0)"
+    background:"rgba(0,0,0,0)",
+    transition:"background 0.2s linear 0s"
 }
 $(".backgroundClr").css(backgroundCSS)
 
@@ -104,7 +105,7 @@ function backgroundOn() {
             clearInterval();
             $('.backgroundClr').css("background","rgba(0,0,0,0.2)")
         }
-    }, 50);
+    }, 201);
 }
  
 tagpro.socket.on("sound", function(message) {
@@ -112,7 +113,7 @@ tagpro.socket.on("sound", function(message) {
     if (["friendlyalert","placeholder"].indexOf(sound)>-1) {
         setTimeout(function(){nyanSound();}, 30);
         setTimeout(function(){colorOn();}, 4090);
-        setTimeout(function(){backgroundOn();}, 4090);
+        setTimeout(function(){backgroundOn();}, 3890);
        
     } else if (["friendlydrop","placeholder"].indexOf(sound)>-1) {
         nyanOff();

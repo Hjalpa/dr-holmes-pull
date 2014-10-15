@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          Juke with Nyan Cat
-// @description   Plays Nyan Cat when flag is grabbed
+// @description   Plays Nyan Cat when flag is grabbed and aslo does other crazy things
 // @include       http://tagpro-*.koalabeast.com*
 // @author        Dr. Holmes
 // @version       3.3

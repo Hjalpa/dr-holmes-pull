@@ -3,7 +3,6 @@
 // @namespace     Dr. Holmes
 // @description   Plays Nyan Cat when flag is grabbed
 // @include       http://tagpro-*.koalabeast.com*
-// @license       WTFPL
 // @author        Dr. Holmes
 // @version       2.1
 // ==/UserScript==
@@ -50,16 +49,18 @@ function nyanOff() {
         musicth.play();
     }
 }
- 
-tagpro.socket.on("sound", function(message) {
-    sound = message.s
-    if (["friendlyalert","placeholder"].indexOf(sound)>-1) {
-        setTimeout(function(){
-        nyanSound();}, 30)
-       
-    } else if (["friendlydrop","placeholder"].indexOf(sound)>-1) {
-        nyanOff();
-    } else if (["cheering","placeholder"].indexOf(sound)>-1) {
-        nyanOff();
-    }
+
+tagpro.ready(function(){
+ tagpro.socket.on("sound", function(message) {
+     sound = message.s
+     if (["friendlyalert","placeholder"].indexOf(sound)>-1) {
+         setTimeout(function(){
+         nyanSound();}, 30)
+        
+     } else if (["friendlydrop","placeholder"].indexOf(sound)>-1) {
+         nyanOff();
+     } else if (["cheering","placeholder"].indexOf(sound)>-1) {
+         nyanOff();
+     }
+ });
 });

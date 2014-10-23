@@ -11,7 +11,7 @@ tagpro.ready(function(){
     var prettyTextOriginal = tagpro.prettyText;
     
     tagpro.prettyText = function(e,t,n,r,s,o,u) {
-        if (e.indexOf("has switched to the")>-1 | e.indexOf("has joined the")>-1 | e.indexOf("left the")>-1) {
+        if (e.indexOf("has switched to the") || e.indexOf("has joined the") || e.indexOf("left the")) {
             e=e.replace("team.","team: ");
             e=e + teamCount();
         }

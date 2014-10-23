@@ -21,9 +21,9 @@ tagpro.ready(function(){
              
 function teamCount(){
 	var ball;
-    	var team;
-    	var red = 0;
-    	var blue = 0;
+   	var team;
+    var red = 0;
+    var blue = 0;
     
 	for (ball in tagpro.players){
 		if (tagpro.players[ball].team == 1){
@@ -46,4 +46,3 @@ function adjustForTeam(red, blue, team){
     }
     return team;
 }
-

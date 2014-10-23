@@ -12,10 +12,8 @@ tagpro.ready(function(){
     
     tagpro.prettyText = function(e,t,n,r,s,o,u) {
         if ((e.search("has switched to the") + e.search("has joined the") + e.search("left the")) > -3){
-            if (e.search("team: ") < 0){
-            	e=e.replace("team.","team: ");
-            	e=e + teamCount();
-            }
+            e=e.replace("team.","team: ");
+            e=e + teamCount();
         }
         return prettyTextOriginal(e,t,n,r,s,o,u);
     }

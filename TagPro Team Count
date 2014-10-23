@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          Team Count
+// @name          TagPro Team Count
 // @namespace     Dr. Holmes
 // @description   Adds team count next to switch/joined/left message
 // @include       http://tagpro-*.koalabeast.com*

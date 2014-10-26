@@ -4,7 +4,7 @@
 // @description   Plays Nyan Cat when flag is grabbed
 // @include       http://tagpro-*.koalabeast.com*
 // @author        Dr. Holmes
-// @version       2.1
+// @version       2.2
 // ==/UserScript==
  
 nyanMusic = [

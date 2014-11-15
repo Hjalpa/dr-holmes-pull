@@ -6,10 +6,8 @@
 // @author        Dr. Holmes
 // @version       2.2
 // ==/UserScript==
-
-soundAll = false
-soundFlag = false
-soundPup = false
+ 
+soundCondition = "flag" //or "all" or "pup"
  
 nyanMusic = [
     "http://k007.kiwi6.com/hotlink/mfz86avv7x/nyan.mp3",
@@ -20,7 +18,6 @@ nyanMusic = [
     ]
 
 tempNyan = nyanMusic[0]
-
 
 $(document).ready(function(){
     $("#sound").css("width","120px");
@@ -38,13 +35,13 @@ $(document).ready(function(){
     $("#soundNyan").addClass("on")
     
     $("#soundNyan").click(function(){
-    	if ($("#soundNyan").hasClass("on")){
+    	if ($(this).hasClass("on")){
             $(this).attr("class","off")
             $(this).css("background-image","url(http://i.imgur.com/Gqv1TeM.png)");
-            document.getElementById("nyan").pause();
+            $("#nyan").trigger("pause");
 		} else {
             $(this).attr("class","on")
-            $("#soundNyan").css("background-image","url(http://i.imgur.com/TYoihYf.png)")
+            $(this).css("background-image","url(http://i.imgur.com/TYoihYf.png)")
     	}
     });
    	
@@ -54,49 +51,86 @@ $(document).ready(function(){
     assets.appendChild(nyan)
     nyan.innerHTML = '<source src="' + tempNyan + '" type="audio/' + tempNyan.split('.').pop() + '">';
 });
- 
 
+tagpro.ready(function(){
+	if (soundCondition == "all"){
+		if (!($("#soundMusic").hasClass("off"))){
+			$("#soundMusic").trigger("pause");
+			nyanSound();
+		}
+		
+		$("#soundMusic").click(function(){
+			if ($("#soundMusic").hasClass("off")){
+				nyanSound();
+			}
+			else {
+				nyanOff();
+			}
+		});		
+	}
+	
+	else {
+		tagpro.socket.on("p" ,function(message)){
+			if (soundCondition == "pup"){
+				try {
+					var pup = message.u[0]	
+					if (!(pup.tagpro && pup.bomb && pup.grip)){
+						nyanOff();
+					}
+				}
+				catch{
+				}
+			}
+		});
+			
+		tagpro.socket.on("sound", function(message){
+			sound = message.s
+			if (soundCondition == "flag"){
+				if (["friendlyalert","placeholder"].indexOf(sound)>-1) {
+					setTimeout(function(){
+					nyanSound();}, 30)
+					
+				} else if (["friendlydrop","placeholder"].indexOf(sound)>-1) {
+					nyanOff();
+				} else if (["cheering","placeholder"].indexOf(sound)>-1) {
+					nyanOff();
+				}
+			}
+		});
+	}
+});
+
+ 
 function nyanSound() {
     var flag = tagpro.players[tagpro.playerId].flag
     if (flag) {
-        var nyan = document.getElementById('nyan');
-        var musicth = document.getElementById('music');
+        var nyan = document.getElementById("nyan");
+        var musicth = document.getElementById("music");
         var rand = Math.floor(Math.random() * (5));
         
-        if ($("#soundNyan").hasClass("on")){
-        	if (document.getElementById('soundMusic').getAttribute('class') !== 'off') {
+        if ($("#soundMusic").hasClass("on")){
+        	if (!($("#soundMusic").hasClass("off"))) {
             	musicth.pause();
         	}
         
         	nyan.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
-        
+			
+			nyan.addEventListener("ended", function(){
+				this.currentTime = 0;
+				this.play();
+			}, false);
+			
         	nyan.pause();
             nyan.load();
             nyan.play();
+			
         }
     }
 }
- 
+
 function nyanOff() {
-    var nyan = document.getElementById('nyan');
-    var musicth = document.getElementById('music');
-    nyan.pause();
-        if (document.getElementById('soundMusic').getAttribute('class') !== 'off') {
-        musicth.play();
+    $("#nyan").trigger("pause");
+    if (!($("#soundMusic").hasClass("off")) {
+		$("#soundMusic").trigger("play");
     }
 }
-
-tagpro.ready(function(){
- tagpro.socket.on("sound", function(message) {
-     sound = message.s
-     if (["friendlyalert","placeholder"].indexOf(sound)>-1) {
-         setTimeout(function(){
-         nyanSound();}, 30)
-        
-     } else if (["friendlydrop","placeholder"].indexOf(sound)>-1) {
-         nyanOff();
-     } else if (["cheering","placeholder"].indexOf(sound)>-1) {
-         nyanOff();
-     }
- });
-});

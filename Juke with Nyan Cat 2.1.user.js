@@ -6,6 +6,10 @@
 // @author        Dr. Holmes
 // @version       2.2
 // ==/UserScript==
+
+soundAll = false
+soundFlag = false
+soundPup = false
  
 nyanMusic = [
     "http://k007.kiwi6.com/hotlink/mfz86avv7x/nyan.mp3",

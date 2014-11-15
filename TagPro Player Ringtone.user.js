@@ -1,6 +1,5 @@
 // ==UserScript==
 // @name          TagPro Player Ringtone
-// @namespace     Dr. Holmes
 // @description   Plays a desired sound when a specific player joins the game
 // @include       http://tagpro-*.koalabeast.com*
 // @author        Dr. Holmes
@@ -26,11 +25,15 @@ tagpro.ready(function(){
 	tagpro.socket.on("p", function(message) { 
 		try {
 			var p = message[0].name;
-			var soundMP3 = check(p);
+			var id = message[0].id;
 			
-			if (soundMP3){
+			if (tagpro.players[id].auth){
+				var soundMP3 = check(p);
+				
+				if (soundMP3){
 				playSound(p, soundMP3);
-            }
+				}
+			}
 		} 
 		catch(error){
 		}
@@ -40,7 +43,12 @@ tagpro.ready(function(){
 function playSound(p,m){
 	addSound(p,m)
 	var tagproSound = document.getElementById('soundEffects');
+	var tagproMusic = document.getElementById('soundMusic');
 	if (tagproSound.getAttribute('class')!='off'){
+		if (tagproMusic.getAttribute('class')!='off'){
+			tagproMusic.pause();
+			tagproMusic.load();
+		}
 		document.getElementById('playerSound').play();
 	}				
 }

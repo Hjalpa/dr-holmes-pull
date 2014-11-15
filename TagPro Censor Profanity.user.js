@@ -24,9 +24,9 @@ tagpro.ready(function(){
 					e=e.replace(Profanity_List[i],censor);
 				}
 	        }
-	        return prettyTextOriginal(e,t,n,r,s,o,u);
 	    }
-	}
+		return prettyTextOriginal(e,t,n,r,s,o,u);
+    }
 });
 
 $(document).ready(function(){

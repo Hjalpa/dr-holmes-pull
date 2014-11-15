@@ -34,20 +34,22 @@ $(document).ready(function(){
 		margin: 'auto',
 		right: '70px',
 		top: '65px',
-		cursor: 'pointer'
+		cursor: 'pointer',
+		width: '32px',
+		height: '32px'
 	}
     
 	$('#censor').css(censorCSS);
-	$('#censor').css('background-image','url(http://i.imgur.com/lFx2zAT.png)');
+	$('#censor').css('background-image','url(http://i.imgur.com/Q2UIei6.png)');
 	$('#censor').addClass('off');
 	
     $("#censor").click(function(){
     	if ($("#censor").hasClass("on")){
             $(this).attr("class","off")
-            $(this).css("background-image","url(http://i.imgur.com/lFx2zAT.png)");
+            $(this).css("background-image","url(http://i.imgur.com/Q2UIei6.png)");
 		} else {
             $(this).attr("class","on")
-            $("#censor").css("background-image","url(http://i.imgur.com/fCVbg0M.png)")
+            $("#censor").css("background-image","url(http://i.imgur.com/H6RUigK.png)")
     	}
     });
 });		

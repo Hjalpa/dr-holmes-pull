@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 Profanity_List = [
-	"example"
+	"example",
 	"example2"
 	];
 	
@@ -16,7 +16,7 @@ tagpro.ready(function(){
     var prettyTextOriginal = tagpro.prettyText;
     
     tagpro.prettyText = function(e,t,n,r,s,o,u) {
-		for (i=0; i<Profanity_List.length; i++|){
+		for (i=0; i<Profanity_List.length; i++){
 			if (e.search(Profanity_List[i])> -1){
 				var length = Profanity_List[i].length;
 				var censor = Array(length+1).join('*');

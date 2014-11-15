@@ -33,7 +33,7 @@ $(document).ready(function(){
 		position: 'absolute',
 		margin: 'auto',
 		right: '70px',
-		top: '67px',
+		top: '68px',
 		cursor: 'pointer',
 		width: '32px',
 		height: '32px'

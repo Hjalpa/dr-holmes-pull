@@ -7,7 +7,7 @@
 // @version       2.3
 // ==/UserScript==
  
-soundCondition = "flag" //or "all" or "pup"
+soundCondition = "flag" //or "all" or "pups"
  
 nyanMusic = [
     "http://k007.kiwi6.com/hotlink/mfz86avv7x/nyan.mp3",
@@ -71,16 +71,16 @@ tagpro.ready(function(){
 	
 	else {
 		tagpro.socket.on("p" ,function(message){
-			if (soundCondition == "pup"){
+			if (soundCondition == "pups"){
 				try {
                     var nyan = document.getElementById("nyan");
-					var pup = message.u[0];
-                    if (pup.tagpro || pup.bomb || pup.grip){
+					var pups = message.u[0];
+                    if (pups.tagpro || pups.bomb || pups.grip){
 						if (nyan.currentTime == 0){
 							nyanSound();
 						}
 					}
-					else if (pup.tagpro == false || pup.bomb == false || pup.grip == false){
+					else if (pups.tagpro == false || pups.bomb == false || pups.grip == false){
                         var me = tagpro.players[tagpro.playerId];
 						if (!me.tagpro && !me.bomb && !me.grip){
 							nyanOff();

@@ -148,8 +148,9 @@ function nyanSound() {
 
 // Stop music
 function nyanOff() {
+    var musicth = document.getElementById("music");
     $("#nyan").trigger("pause");
     if (!($("#soundMusic").hasClass("off"))) {
-		$("#soundMusic").trigger("play");
+		musicth.play();
     }
 }

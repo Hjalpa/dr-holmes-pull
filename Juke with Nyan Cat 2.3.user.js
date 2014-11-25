@@ -62,8 +62,6 @@ tagpro.ready(function(){
 	
 	// When codition is all
 	if (soundCondition == "all"){
-		$("#soundNyan").attr("class","on")
-		$("#soundNyan").hide();
 		if (!($("#soundMusic").hasClass("off"))){
 			$("#soundMusic").trigger("pause");
 			nyanSound();

@@ -62,13 +62,12 @@ tagpro.ready(function(){
 	
 	// When codition is all
 	if (soundCondition == "all"){
-		if (!($("#soundMusic").hasClass("off"))){
-			$("#soundMusic").trigger("pause");
+		if (!($("#soundNyan").hasClass("off"))){
 			nyanSound();
 		}
 		
-		$("#soundMusic").click(function(){
-			if ($("#soundMusic").hasClass("off")){
+		$("#soundNyan").click(function(){
+			if ($("#soundNyan").hasClass("off")){
 				nyanOff();
 			}
 			else {

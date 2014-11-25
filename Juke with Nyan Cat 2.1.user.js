@@ -8,7 +8,8 @@
 // ==/UserScript==
  
 soundCondition = "flag" //or "all" or "pups"
- 
+
+// Adding Nyan Cat music
 nyanMusic = [
     "http://k007.kiwi6.com/hotlink/mfz86avv7x/nyan.mp3",
     "http://k007.kiwi6.com/hotlink/mfz86avv7x/nyan.mp3",
@@ -20,6 +21,8 @@ nyanMusic = [
 tempNyan = nyanMusic[0]
 
 $(document).ready(function(){
+	
+    // Nyan Cat icon
     $("#sound").css("width","120px");
 	$("#sound").find("#soundEffects").before('<div id="soundNyan"></div>');
     var soundNyanCSS = {
@@ -44,7 +47,8 @@ $(document).ready(function(){
             $(this).css("background-image","url(http://i.imgur.com/TYoihYf.png)")
     	}
     });
-   	
+   
+    // Adding audio
     nyan = document.createElement('audio');
     nyan.setAttribute('id', 'nyan');
     nyan.setAttribute('preload', 'auto');
@@ -52,7 +56,11 @@ $(document).ready(function(){
     nyan.innerHTML = '<source src="' + tempNyan + '" type="audio/' + tempNyan.split('.').pop() + '">';
 });
 
+
+// Script
 tagpro.ready(function(){
+	
+	// When codition is all
 	if (soundCondition == "all"){
 		if (!($("#soundMusic").hasClass("off"))){
 			$("#soundMusic").trigger("pause");
@@ -70,6 +78,7 @@ tagpro.ready(function(){
 	}
 	
 	else {
+		// When codition is pups
 		tagpro.socket.on("p" ,function(message){
 			if (soundCondition == "pups"){
 				try {
@@ -91,7 +100,8 @@ tagpro.ready(function(){
 				}
 			}
 		});
-			
+		
+		// When codition is flag
 		tagpro.socket.on("sound", function(message){
 			sound = message.s
 			if (soundCondition == "flag"){
@@ -112,7 +122,7 @@ tagpro.ready(function(){
 	}
 });
 
- 
+// Play music
 function nyanSound() {
 	var nyan = document.getElementById("nyan");
     var musicth = document.getElementById("music");
@@ -136,6 +146,7 @@ function nyanSound() {
     }
 }
 
+// Stop music
 function nyanOff() {
     $("#nyan").trigger("pause");
     if (!($("#soundMusic").hasClass("off"))) {

@@ -39,11 +39,11 @@ $(document).ready(function(){
     
     $("#soundNyan").click(function(){
     	if ($(this).hasClass("on")){
-            $(this).attr("class","off")
+            $(this).attr("class","off");
             $(this).css("background-image","url(http://i.imgur.com/Gqv1TeM.png)");
             $("#nyan").trigger("pause");
 		} else {
-            $(this).attr("class","on")
+            $(this).attr("class","on");
             $(this).css("background-image","url(http://i.imgur.com/TYoihYf.png)")
     	}
     });
@@ -62,6 +62,8 @@ tagpro.ready(function(){
 	
 	// When codition is all
 	if (soundCondition == "all"){
+		$("#soundNyan").attr("class","on")
+		$("#soundNyan").hide();
 		if (!($("#soundMusic").hasClass("off"))){
 			$("#soundMusic").trigger("pause");
 			nyanSound();

@@ -4,7 +4,7 @@
 // @description   Plays Nyan Cat when flag is grabbed
 // @include       http://tagpro-*.koalabeast.com*
 // @author        Dr. Holmes
-// @version       2.2
+// @version       2.3
 // ==/UserScript==
  
 soundCondition = "flag" //or "all" or "pup"
@@ -61,24 +61,33 @@ tagpro.ready(function(){
 		
 		$("#soundMusic").click(function(){
 			if ($("#soundMusic").hasClass("off")){
-				nyanSound();
+				nyanOff();
 			}
 			else {
-				nyanOff();
+				nyanSound();
 			}
 		});		
 	}
 	
 	else {
-		tagpro.socket.on("p" ,function(message)){
+		tagpro.socket.on("p" ,function(message){
 			if (soundCondition == "pup"){
 				try {
-					var pup = message.u[0]	
-					if (!(pup.tagpro && pup.bomb && pup.grip)){
-						nyanOff();
+                    var nyan = document.getElementById("nyan");
+					var pup = message.u[0];
+                    if (pup.tagpro || pup.bomb || pup.grip){
+						if (nyan.currentTime == 0){
+							nyanSound();
+						}
+					}
+					else if (pup.tagpro == false || pup.bomb == false || pup.grip == false){
+                        var me = tagpro.players[tagpro.playerId];
+						if (!me.tagpro && !me.bomb && !me.grip){
+							nyanOff();
+						}
 					}
 				}
-				catch{
+				finally{
 				}
 			}
 		});
@@ -88,7 +97,10 @@ tagpro.ready(function(){
 			if (soundCondition == "flag"){
 				if (["friendlyalert","placeholder"].indexOf(sound)>-1) {
 					setTimeout(function(){
-					nyanSound();}, 30)
+						if(tagpro.players[tagpro.playerId].flag){
+							nyanSound();
+						}
+					}, 30);
 					
 				} else if (["friendlydrop","placeholder"].indexOf(sound)>-1) {
 					nyanOff();
@@ -102,35 +114,31 @@ tagpro.ready(function(){
 
  
 function nyanSound() {
-    var flag = tagpro.players[tagpro.playerId].flag
-    if (flag) {
-        var nyan = document.getElementById("nyan");
-        var musicth = document.getElementById("music");
-        var rand = Math.floor(Math.random() * (5));
+	var nyan = document.getElementById("nyan");
+    var musicth = document.getElementById("music");
+    var rand = Math.floor(Math.random() * (5));
         
-        if ($("#soundMusic").hasClass("on")){
-        	if (!($("#soundMusic").hasClass("off"))) {
-            	musicth.pause();
-        	}
-        
-        	nyan.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
-			
-			nyan.addEventListener("ended", function(){
-				this.currentTime = 0;
-				this.play();
-			}, false);
-			
-        	nyan.pause();
-            nyan.load();
-            nyan.play();
-			
+    if ($("#soundNyan").hasClass("on")){
+        if (!($("#soundMusic").hasClass("off"))) {
+        	musicth.pause();
         }
+        
+        nyan.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
+			
+		nyan.addEventListener("ended", function(){
+			this.currentTime = 0;
+			this.play();
+		}, false);
+        
+        nyan.pause();
+        nyan.load();
+        nyan.play();
     }
 }
 
 function nyanOff() {
     $("#nyan").trigger("pause");
-    if (!($("#soundMusic").hasClass("off")) {
+    if (!($("#soundMusic").hasClass("off"))) {
 		$("#soundMusic").trigger("play");
     }
 }

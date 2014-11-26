@@ -7,7 +7,7 @@
 // @version       2.3
 // ==/UserScript==
  
-soundCondition = "pups" // "flag" or "all" or "pups"
+soundCondition = "flag" // "flag" or "all" or "pups"
 
 // Adding Nyan Cat music
 nyanMusic = [

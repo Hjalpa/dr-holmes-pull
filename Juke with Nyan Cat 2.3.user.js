@@ -7,7 +7,7 @@
 // @version       2.3
 // ==/UserScript==
  
-soundCondition = "flag" // "flag" or "all" or "pups"
+soundCondition = "pups" // "flag" or "all" or "pups"
 
 // Adding Nyan Cat music
 nyanMusic = [
@@ -134,12 +134,11 @@ tagpro.ready(function(){
 // Play music
 function nyanSound() {
 	var nyan = document.getElementById("nyan");
-    var musicth = document.getElementById("music");
     var rand = Math.floor(Math.random() * (5));
         
     if ($("#soundNyan").hasClass("on")){
         if (!($("#soundMusic").hasClass("off"))) {
-        	musicth.pause();
+        	$("#music").trigger("pause");
         }
         
         nyan.innerHTML = '<source src="' + nyanMusic[rand] + '" type="audio/' + nyanMusic[rand].split('.').pop() + '">';
@@ -157,9 +156,9 @@ function nyanSound() {
 
 // Stop music
 function nyanOff() {
-    var musicth = document.getElementById("music");
     $("#nyan").trigger("pause");
+    $("#nyan").trigger("load");
     if (!($("#soundMusic").hasClass("off"))) {
-		musicth.play();
+		$("#music").trigger("play");
     }
 }

@@ -78,7 +78,7 @@ tagpro.ready(function(){
 	
 	else {
 		// When codition is pups
-		setInterval(function(){
+		setTimeout(function(){
 			tagpro.socket.on("p" ,function(message){
 				if (soundCondition == "pups"){
 					var nyan = document.getElementById("nyan");

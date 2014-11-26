@@ -100,7 +100,7 @@ tagpro.ready(function(){
 					}
 				}
 			});
-		}, 5000);
+		}, 1000);
 		
 		// When codition is flag
 		tagpro.socket.on("sound", function(message){

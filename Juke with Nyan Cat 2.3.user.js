@@ -7,7 +7,7 @@
 // @version       2.3
 // ==/UserScript==
  
-soundCondition = "pups" //or "all" or "pups"
+soundCondition = "flag" // "flag" or "all" or "pups"
 
 // Adding Nyan Cat music
 nyanMusic = [
@@ -78,27 +78,29 @@ tagpro.ready(function(){
 	
 	else {
 		// When codition is pups
-		tagpro.socket.on("p" ,function(message){
-			if (soundCondition == "pups"){
-				try {
-                    var nyan = document.getElementById("nyan");
-					var pups = message.u[0];
-                    if (pups.tagpro || pups.bomb || pups.grip){
-						if (nyan.currentTime == 0){
-							nyanSound();
+		setInterval(function{
+			tagpro.socket.on("p" ,function(message){
+				if (soundCondition == "pups"){
+					try {
+	                    var nyan = document.getElementById("nyan");
+						var pups = message.u[0];
+	                    if (pups.tagpro || pups.bomb || pups.grip){
+							if (nyan.currentTime == 0){
+								nyanSound();
+							}
+						}
+						else if (pups.tagpro == false || pups.bomb == false || pups.grip == false){
+	                        var me = tagpro.players[tagpro.playerId];
+							if (!me.tagpro && !me.bomb && !me.grip){
+								nyanOff();
+							}
 						}
 					}
-					else if (pups.tagpro == false || pups.bomb == false || pups.grip == false){
-                        var me = tagpro.players[tagpro.playerId];
-						if (!me.tagpro && !me.bomb && !me.grip){
-							nyanOff();
-						}
+					finally{
 					}
 				}
-				finally{
-				}
-			}
-		});
+			});
+		}, 5000);
 		
 		// When codition is flag
 		tagpro.socket.on("sound", function(message){

@@ -8,7 +8,8 @@ tagpro.ready(function() {
         $canvas = $("canvas"),
         canvasPos = $canvas.offset(),
         canvasHeight = $canvas.get(0).height,
-        socket = tagpro.socket;
+        socket = tagpro.socket,
+        chatSave = "";
 
     $(document).keydown(function(e) {
         var chatToTeam = tagpro.keys.chatToTeam.indexOf(e.keyCode) != -1;
@@ -17,7 +18,7 @@ tagpro.ready(function() {
 
         if ( ( chatToTeam || chatToGroup || chatToAll ) && !chatState) {
             if ($("#name").is(":focus")) return;
-
+            $chatInput.val(chatSave);
             getChatInput(chatToTeam, chatToGroup);
             e.preventDefault();
         }
@@ -104,6 +105,8 @@ tagpro.ready(function() {
             .val("")
             .show()
             .focus();
+            
+        chatSave = "";
     }
 
     function sendChat() {
@@ -129,6 +132,7 @@ tagpro.ready(function() {
     };
 
     function cancelChat() {
+        chatSave = $chatInput.val();
         chatState = false;
         tagpro.disableControls = false;
         $chatInput.hide();

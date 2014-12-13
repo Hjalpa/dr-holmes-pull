@@ -14,11 +14,14 @@ tagpro.ready(function(){
         ["all",false,""],
         ["team",false,""],
         ["group",false,""]
-    ],
+        ],
+        
         exitKey = [37,38,39,40,exit_key],
+        
         all = tagpro.keys.chatToAll,
         team = tagpro.keys.chatToTeam,
         group = tagpro.keys.chatToGroup,
+        
         $input = $("#chat");
     
     $(document).keydown(function(e){

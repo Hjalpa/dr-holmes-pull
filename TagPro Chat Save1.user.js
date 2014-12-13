@@ -16,9 +16,9 @@ tagpro.ready(function(){
         ["group",false,""]
     ],
         exitKey = [37,38,39,40,exit_key],
-        tagpro.keys.chatToAll = all,
-        tagpro.keys.chatToTeam = team,
-        tagpro.keys.chatToGroup = group,
+        all = tagpro.keys.chatToAll,
+        team = tagpro.keys.chatToTeam,
+        group = tagpro.keys.chatToGroup,
         $input = $("#chat");
     
     $(document).keydown(function(e){

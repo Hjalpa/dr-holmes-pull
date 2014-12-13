@@ -15,7 +15,10 @@ tagpro.ready(function(){
         ["team",false,""],
         ["group",false,""]
     ],
-        exitKey = [37,38,39,40,exit_key];
+        exitKey = [37,38,39,40,exit_key],
+        tagpro.keys.chatToAll = all,
+        tagpro.keys.chatToTeam = team,
+        tagpro.keys.chatToGroup = group;
     
     $(document).keydown(function(e){
 

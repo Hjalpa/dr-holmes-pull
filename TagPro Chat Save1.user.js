@@ -18,16 +18,17 @@ tagpro.ready(function(){
         exitKey = [37,38,39,40,exit_key],
         tagpro.keys.chatToAll = all,
         tagpro.keys.chatToTeam = team,
-        tagpro.keys.chatToGroup = group;
+        tagpro.keys.chatToGroup = group,
+        $input = $("#chat");
     
     $(document).keydown(function(e){
 
-        if ($("#chat").val().length > 0){
+        if ($input.val().length > 0){
             chatSave(chat);
             
             if (exitKey.indexOf(e.which) > -1){
-                if ($("#chat").css("display")!="none"){
-                    $("#chat").val("");
+                if ($input.css("display")!="none"){
+                    $input.val("");
                     
                     var enter = $.Event("keydown", { keyCode: 13});
                     $("body").trigger(enter);
@@ -38,18 +39,19 @@ tagpro.ready(function(){
                     chat[2][1] = false;
                 }
             }
-            else if (e.which == 13){
+            else if (all.indexOf(e.which) > -1){
                     reset(chat);
         	}
-		}
+	    }
         
-		else if (e.which == 13 || e.which == 84 || e.which == 71){
-            if ($("#chat").css("display")!="none"){
-                if (e.which == 13){
+		else if (all.indexOf(e.which) + team.indexOf(e.which) + group.indexOf(e.which) > -3){
+			
+            if ($input.css("display")!="none"){
+                if (all.indexOf(e.which) > -1){
                     chat[0][1] = true;
-                } else if (e.which == 84){
+                } else if (team.indexOf(e.which) > -1){
                     chat[1][1] = true;
-                } else if (e.which == 71){
+                } else if (group.indexOf(e.which) > -1){
                     chat[2][1] = true;
                 }
                 
@@ -64,25 +66,25 @@ tagpro.ready(function(){
 
 function chatSave(chat){
     if(chat[0][1]){
-        chat[0][2] = $("#chat").val();
+        chat[0][2] = $input.val();
     } 
     else if (chat[1][1]){
-        chat[1][2] = $("#chat").val();
+        chat[1][2] = $input.val();
     } 
     else if (chat[2][1]){
-    	chat[2][2] = $("#chat").val();
+    	chat[2][2] = $input.val();
     }
 }
 
 function loadSave(chat){
     if (chat[0][1]){
-        $("#chat").val(chat[0][2]);
+        $input.val(chat[0][2]);
     } 
     else if (chat[1][1]){
-        $("#chat").val(chat[1][2]);
+        $input.val(chat[1][2]);
     } 
     else if (chat[2][1]){
-        $("#chat").val(chat[2][2]);
+        $input.val(chat[2][2]);
     }
 }
 

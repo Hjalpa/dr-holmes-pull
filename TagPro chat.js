@@ -17,16 +17,16 @@ tagpro.ready(function() {
         var chatToAll = tagpro.keys.chatToAll.indexOf(e.keyCode) != -1;
 
         if ( ( chatToTeam || chatToGroup || chatToAll ) && !chatState) {
-            console.log(chatSave);
             if ($("#name").is(":focus")) return;
             getChatInput(chatToTeam, chatToGroup);
             e.preventDefault();
         }
         else if (tagpro.keys.sendChat.indexOf(e.keyCode) != -1 && chatState){
             sendChat();
-		} else {
-			chatSave = $chatInput.val();
-		}
+	} else {
+		chatSave = $chatInput.val();
+		console.log(chatSave);
+	}
     });
 
     var $messageTemplate = $("<div><span class='auth'>&#10004</span><span class='name'></span><span class='message'></span></div>");
@@ -103,7 +103,8 @@ tagpro.ready(function() {
         tagpro.disableControls = true;
         sendChatToTeam = toTeam;
         sendChatToGroup = toGroup;
-
+	
+	console.log(chatSave);
         $chatInput
             .val(chatSave)
             .show()

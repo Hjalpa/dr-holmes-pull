@@ -7,7 +7,7 @@
 // @version       0.1
 // ==/UserScript==
 
-exit_key = 0;
+exit_key = 0; // <---- REPLACE '0' WITH A KEYCODE FOR A KEY OF YOUR CHOICE
 
 tagpro.ready(function(){
     var chat = [
@@ -65,37 +65,37 @@ tagpro.ready(function(){
             }
 		}
 	});
+
+	function chatSave(chat){
+	    if(chat[0][1]){
+	        chat[0][2] = $input.val();
+	    } 
+	    else if (chat[1][1]){
+	        chat[1][2] = $input.val();
+	    } 
+	    else if (chat[2][1]){
+	    	chat[2][2] = $input.val();
+	    }
+	}
+	
+	function loadSave(chat){
+	   	if (chat[0][1]){
+	        $input.val(chat[0][2]);
+	    } 
+	    else if (chat[1][1]){
+	        $input.val(chat[1][2]);
+	    } 
+	    else if (chat[2][1]){
+	        $input.val(chat[2][2]);
+	    }
+	}
+	
+	function reset(chat){
+	    for (i=0;i<3;i++){
+	        if (chat[i][1]){
+	            chat[i][1] = false;
+	            chat[i][2] ="";
+	        }
+	    }
+	}
 });
-
-function chatSave(chat){
-    if(chat[0][1]){
-        chat[0][2] = $input.val();
-    } 
-    else if (chat[1][1]){
-        chat[1][2] = $input.val();
-    } 
-    else if (chat[2][1]){
-    	chat[2][2] = $input.val();
-    }
-}
-
-function loadSave(chat){
-    if (chat[0][1]){
-        $input.val(chat[0][2]);
-    } 
-    else if (chat[1][1]){
-        $input.val(chat[1][2]);
-    } 
-    else if (chat[2][1]){
-        $input.val(chat[2][2]);
-    }
-}
-
-function reset(chat){
-    for (i=0;i<3;i++){
-        if (chat[i][1]){
-            chat[i][1] = false;
-            chat[i][2] ="";
-        }
-    }
-}

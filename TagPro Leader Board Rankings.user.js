@@ -16,7 +16,7 @@ $(document).ready(function(){
         $week = $('<div>'),
         $month = $('<div>'),
         
-        myName = 'yippie'//$('body h3:nth-child(2)').html().split('<div>')[0];
+        myName = $('body h3:nth-child(2)').html().split('<div>')[0];
     
     
     $day.load('/boards article #Day .board tbody', function(){

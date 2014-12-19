@@ -31,9 +31,9 @@ tagpro.ready(function(){
 		tagpro.musicPlayer.mute();
 		tagpro.musicPlayer.current = i;
 			
-		e=$("<audio id='music' volume='"+i.volume+"' autoplay='true'>").appendTo($(document.body)),
+		e=$("<audio id='music' volume='"+i.volume+"' autoplay='true'>").appendTo($(document.body));
 		e[0].volume=i.volume;
-		e.append("<source type='audio/mp3' src="+i.url+"></source>")
+		e.append("<source type='audio/mp3' src="+i.url+"></source>");
 		
 		e.on("ended",tagpro.musicPlayer.next);
 	}

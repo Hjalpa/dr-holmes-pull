@@ -1,3 +1,12 @@
+// ==UserScript==
+// @name          TagPro Player Name Autofill (any key)
+// @namespace     Dr. Holmes
+// @description   Autofills the player's name when the name is typed partially
+// @include       http://tagpro-*.koalabeast.com*
+// @author        Dr. Holmes
+// @version       0.1
+// ==/UserScript==
+
 tagpro.ready(function(){
 
 //////////////////////////////////////////////

@@ -15,14 +15,15 @@ tagpro.ready(function(){
 
 //////////////////////////////////////////////
 	
-	var typingName = true,	
+	var $input = $("#chat"),
+		typingName = true,	
 		input = '',
 		player = '',
 		name = '';
 		
 	$(document).keydown(function(key){
 		if ($input.val().length > 0){
-			if (key.which == search_player_keycode){
+			if (key.which == Search_Player_Keycode){
 				if (typingName){
 					input = $input.val();
 					input = input.split(' ');

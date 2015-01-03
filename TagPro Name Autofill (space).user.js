@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          TagPro Player Name Autofill (space)
+// @name          TagPro Player Autofill (space)
 // @namespace     Dr. Holmes
 // @description   Autofills the player's name when the name is typed partially
 // @include       http://tagpro-*.koalabeast.com*

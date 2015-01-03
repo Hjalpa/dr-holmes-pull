@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          TagPro Censor Profanity
+// @name          TagPro Censor Profanity v2
 // @namespace     Dr. Holmes
 // @description   Censors profanities specified
 // @include       http://tagpro-*.koalabeast.com*

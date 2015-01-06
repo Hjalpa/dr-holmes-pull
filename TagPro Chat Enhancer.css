@@ -1,0 +1,109 @@
+#CE-settings{
+	color: white;
+	font-size: 1.5em;
+	background-color: rgba(55,55,55,0.9);
+	border: 10px solid #FFF;
+	border-radius: 10px;
+	width: 50%;
+	height: 50%;
+	position: fixed;
+	left: 50%;
+	top: 45%;
+	transform: translate(-50%,-50%);
+	display: none;
+	z-index: 1000;
+	padding: 2.5% 2.5% 2.5% 2.5%;
+	display: block;
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#CE-settings-title{
+	text-align: center;
+	color: white;
+	font-size: 38px;
+	margin: 0px;
+}
+
+#CE-settings-exit{
+	display: inline;
+	position: absolute;
+	right: 3px;
+	top: 0px;
+	text-decoration: none;
+	color: white;
+	opacity: 0.4;
+	font-size: 1em;
+	margin: 0px 6px;
+}
+
+#CE-settings-exit:hover{
+	opacity: 1;
+}
+
+#CE-menu{
+	display: table;
+	table-layout: fixed;
+	height: 40px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#CE-menu label{
+	display: table-cell;
+}
+
+.CE-button{
+	height: 30px;
+	width: 100%;
+	margin-top: 20px;
+}
+
+#CE-settings-body{
+	height: 75%;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	border-radius: 3px;
+	overflow-y: scroll;
+}
+
+#CE-settings-body div{
+	padding: 6px 40px 20px 40px;
+}
+
+#CE-settings-body h3,p{
+	font-size: 0.8em;
+}
+
+#CE-settings-body h3{
+	margin-top: 15px;
+	font-size: 1em;
+	color: black;
+}
+
+#CE-settings-body p{
+	color: black;
+}
+
+#CE-submit-button{
+	display: block;
+	height: 30px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: 5%;
+}
+
+#AutoChat div{
+	width: 40%;
+	border: 2px solid black;
+	overflow: hidden;
+	margin: 7px 0px;
+	font-size: 0.7em;
+}
+
+button[name="AllOrTeam"]{
+	width: 49px;
+	text-align: center;
+}

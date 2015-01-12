@@ -63,7 +63,7 @@ $(document).ready(function(){
 	
 	function rankRewrite(rank){
 		if (rank[0]){
-			rank = rank[0]+' [-'+rank[1]+', +'+rank[2]+']';
+			rank = rank[0];//+' [-'+rank[1]+', +'+rank[2]+']';
 		}
 		else {
 			rank = 'NA';

@@ -13,13 +13,14 @@ $(document).ready(function(){
 	$friendsButton.attr('target','_blank');
 	$friendsButton.css('marginLeft','10px');
 	$friendsButton.text('Chat with Friends');
-	$('article div.section.smaller a[href="/settings"').css('marginRight','10px');
-	$('article div.section.smaller:eq(0)').append($friendsButton);
 	
 	var $modButton = $('<a>');
 	$modButton.attr('href','http://webchat.freenode.net/?channels=tpmods');
 	$modButton.attr('target','_blank');
 	$modButton.css('marginLeft','20px');
 	$modButton.text('Contact a Mod');
+	
+	$('article div.section.smaller a[href="/settings"').css('marginRight','10px');
+	$('article div.section.smaller:eq(0)').append($friendsButton);
 	$('article div.section.smaller:eq(0)').append($modButton);
 });

@@ -23,4 +23,16 @@ $(document).ready(function(){
 	$('article div.section.smaller a[href="/settings"').css('marginRight','10px');
 	$('article div.section.smaller:eq(0)').append($friendsButton);
 	$('article div.section.smaller:eq(0)').append($modButton);
+	
+	tagpro.ready(function(){
+		$div = $('<div class="tight"></div>');
+		$irc = $('<a href="http://webchat.freenode.net/?channels=tagpro" target="_blank"></a>');
+		$irc.append('<img src="http://i.imgur.com/fWmkoVf.png" border="0">');
+		$irc.append('<span>#tagpro - chat with your friends</span>');
+
+		$div.append($irc);
+		$('#optionsLinks').append($div);
+	});
 });
+
+

@@ -60,7 +60,6 @@ tagpro.ready(function(){
             }, 100);
 		}
 		else if (sound == 'friendlydrop' || sound == 'cheering'){
-            console.log('drop');
 			if (text != null){
 				tr.layers.ui.removeChild(text);
 			}

@@ -36,10 +36,17 @@ tagpro.ready(function(){
 		if (sound == 'friendlyalert'){
             setTimeout(function(){
                 var fc;
-                 
+                
                 for (p in players){
-                    if (players[p].flag){
-                        fc = players[p].name;
+                    if (tagpro.players[tagpro.playerId].team == 1){
+	                    if (players[p].flag == 2){
+	                        fc = players[p].name;
+	                    }
+                    }
+                    else {
+                    	if (players[p].flag ==1){
+                    		fc = players[p].name;
+                    	}
                     }
                 }
                 

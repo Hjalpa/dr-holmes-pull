@@ -18,7 +18,7 @@ tagpro.ready(function(){
         textPos = {x:0,y:0};
     
     function getPos() {
-        if (tagpro.players[tagpro.playerId].team == redTeam){
+        if (players[tagpro.playerId].team == redTeam){
             var flag = tagpro.ui.sprites.blueFlag;
             textPos.x = flag.x;
             textPos.y = flag.y;
@@ -38,15 +38,10 @@ tagpro.ready(function(){
                 var fc;
                 
                 for (p in players){
-                    if (tagpro.players[tagpro.playerId].team == 1){
-	                    if (players[p].flag == 2){
+                    if (players[p].team == players[tagpro.playerId].team){
+	                    if (players[p].flag){
 	                        fc = players[p].name;
 	                    }
-                    }
-                    else {
-                    	if (players[p].flag ==1){
-                    		fc = players[p].name;
-                    	}
                     }
                 }
                 

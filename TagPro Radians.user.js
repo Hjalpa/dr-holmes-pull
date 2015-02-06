@@ -11,18 +11,16 @@
 
 tagpro.ready(function(){
 	var tr = tagpro.renderer;
-	var me = tagpro.players[tagpro.playerId];
 	
-	if (me.degree){
-		var deg = parseInt(me.degree);
-		var rad = convert(deg);
-		
-		me.sprites.degreesRad = tr.prettyText(rad+'π');
-		me.sprites.degreesRad.x = 36;
-		me.sprites.degreesRad.y = -5;
-		
-		me.sprites.info.removeChild(me.sprites.degrees);
-		me.sprites.info.addChild(me.sprites.degreesRad);
+	tr.drawDegree = function(player){
+		if (!player.sprites.degrees && player.degree) {
+            player.sprites.degrees = tr.prettyText(convert(player.degree) + "π");
+            player.sprites.info.addChild(player.sprites.degrees);
+        }
+        if (player.sprites.degrees) {
+            player.sprites.degrees.x = 36;
+            player.sprites.degrees.y = -5;
+        }
 	}
 	
 	function convert(deg){

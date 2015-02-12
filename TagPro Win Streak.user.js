@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          TagPro Win Streak
+// @name          TagPro Win Streaks
 // @namespace     Dr. Holmes
 // @description   Win Streak
 // @include       http://tagpro-*.koalabeast.com*

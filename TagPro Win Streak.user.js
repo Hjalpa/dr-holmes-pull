@@ -3,8 +3,9 @@
 // @namespace     Dr. Holmes
 // @description   Win Streak
 // @include       http://tagpro-*.koalabeast.com*
+// @include 	  http://maptest*.newcompte.fr*
 // @author        Dr. Holmes
-// @version       0.2
+// @version       0.1
 // @grant GM_setValue
 // @grant GM_getValue
 // @grant GM_log
@@ -21,7 +22,7 @@ tagpro.ready(function(){
 		winStreak = JSON.parse(GM_getValue('winStreak',JSON.stringify(false)));
 	};
 	
-	if (window.location.href.indexOf(':') > -1){
+	if (window.location.href.indexOf('com:') > -1){
         var joinTime;
         
         tagpro.socket.on('time', function(message){
@@ -46,9 +47,9 @@ tagpro.ready(function(){
             }
         };
         
-        function highStreak(){
-            if (winStreak.streak > winStreak.high){
-                winStreak.high = winStreak.streak;
+        function highStreak(streak){
+            if (streak > winStreak.high){
+                winStreak.high = streak;
             }
         };
         
@@ -78,7 +79,7 @@ tagpro.ready(function(){
                 else {
                     streak = 0;
                 }
-            highStreak();
+            highStreak(streak);
             var newObj = {
                 streak: streak,
                 high: winStreak.high

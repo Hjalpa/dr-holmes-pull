@@ -5,7 +5,7 @@
 // @include		  http://tangent.jukejuice.com:*
 // @include       http://*.newcompte.fr:*
 // @author        Dr. Holmes
-// @version       0.1
+// @version       0.1 
 // ==/UserScript==
 
 tagpro.ready(function(){

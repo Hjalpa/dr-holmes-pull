@@ -17,7 +17,7 @@ tagpro.ready(function(){
 		newObj = {
 			streak: 0,
 			high: 0
-		}
+		};
 		GM_setValue('winStreak', JSON.stringify(newObj));
 		winStreak = JSON.parse(GM_getValue('winStreak',JSON.stringify(false)));
 	};
@@ -72,18 +72,18 @@ tagpro.ready(function(){
                 if (tagpro.players[tagpro.playerId].team == 1) streak = win(winStreak.streak);
                 else streak = loss(winStreak.streak);
             } 
-            else if (tagpro.score.b > tagpro.score.b){
+            else if (tagpro.score.b > tagpro.score.r){
                 if (tagpro.players[tagpro.playerId].team == 2) streak = win(winStreak.streak);
                 else streak = loss(winStreak.streak);
             }
-                else {
-                    streak = 0;
-                }
+            else {
+                streak = 0;
+            }
             highStreak(streak);
             var newObj = {
                 streak: streak,
                 high: winStreak.high
-            }
+            };
             GM_setValue('winStreak', JSON.stringify(newObj));
         };
 	}

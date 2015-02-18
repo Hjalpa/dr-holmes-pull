@@ -1,3 +1,16 @@
+// ==UserScript==
+// @name          TagPro Bot Speak
+// @namespace     Dr. Holmes
+// @description   Speak like a bot
+// @include       http://tagpro-*.koalabeast.com*
+// @include 	  http://maptest*.newcompte.fr*
+// @author        Dr. Holmes
+// @version       0.1
+// @grant GM_setValue
+// @grant GM_getValue
+// @grant GM_log
+// ==/UserScript==
+
 tagpro.ready(function(){
     function toBinary(str, spaceSeparatedOctets){
         return str.replace(/[\s\S]/g, function(str) {

@@ -20,12 +20,7 @@ tagpro.ready(function() {
 
     tagpro.socket.on('chat', function (data) {
         var message = data.message;
-        var regex1 = new RegExp(' ', 'g')
-        var regex2 = new RegExp('1', 'g')
-        var regex3 = new RegExp('0', 'g')
-        message = message.replace(regex1, '');
-        message = message.replace(regex2, '');
-        message = message.replace(regex3, '');
+        message = message.replace(/[01]|\s/g,'');
         if (message == '') {
             var msgTranslated = toAscii(data.message);
             $('#chatHistory div:last').find('.message').text(msgTranslated + ' (translated)');

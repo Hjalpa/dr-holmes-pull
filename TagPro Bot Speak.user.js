@@ -30,7 +30,6 @@ tagpro.ready(function(){
                 if (message.length > 0){
                     var word = message.splice(0, 7).join('');
                     var newChat = {message: toBinary(word), toAll: n.toAll};
-                    console.log(newChat);
                     socketEmit('chat', newChat);
                 }
                 else {

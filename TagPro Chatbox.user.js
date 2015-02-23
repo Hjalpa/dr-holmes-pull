@@ -21,6 +21,24 @@ tagpro.ready(function() {
 // END
 ///////////////////////////////////
 
+	function injectScript(path) {
+		var script = document.createElement('script');
+		script.setAttribute("type", "application/javascript");
+		script.src = path;
+		script.onload = removeScript;
+		(document.head||document.documentElement).appendChild(script);
+	}
+	
+	injectScript('https://raw.githubusercontent.com/imankulov/asuggest/master/jquery.a-tools-1.4.1.js');
+	injectScript('https://raw.githubusercontent.com/imankulov/asuggest/master/jquery.asuggest.js');
+	injectScript('//code.jquery.com/ui/1.11.3/jquery-ui.js');
+	
+	var link = document.createElement("link");
+	link.href = "//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.getElementsByTagName("head")[0].appendChild(link);
+
 	var chatSettings = {
 		position: sessionStorage['ChatPosition'],
 		size: sessionStorage['ChatSize']

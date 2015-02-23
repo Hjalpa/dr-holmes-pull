@@ -22,6 +22,17 @@ tagpro.ready(function(){
 // END
 /////////////////////////////////////
 
+	function injectScript(path) {
+		var script = document.createElement('script');
+		script.setAttribute("type", "application/javascript");
+		script.src = path;
+		script.onload = removeScript;
+		(document.head||document.documentElement).appendChild(script);
+	}
+	
+	injectScript('https://raw.githubusercontent.com/imankulov/asuggest/master/jquery.a-tools-1.4.1.js');
+	injectScript('https://raw.githubusercontent.com/imankulov/asuggest/master/jquery.asuggest.js');
+
 	var $input = $("#chat"),
 		players = tagpro.players,
 		playerlist = [];

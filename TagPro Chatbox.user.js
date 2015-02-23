@@ -29,8 +29,6 @@ tagpro.ready(function() {
 		(document.head||document.documentElement).appendChild(script);
 	}
 	
-	injectScript('https://raw.githubusercontent.com/imankulov/asuggest/master/jquery.a-tools-1.4.1.js');
-	injectScript('https://raw.githubusercontent.com/imankulov/asuggest/master/jquery.asuggest.js');
 	injectScript('//code.jquery.com/ui/1.11.3/jquery-ui.js');
 	
 	var link = document.createElement("link");

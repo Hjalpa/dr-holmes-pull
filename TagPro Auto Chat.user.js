@@ -1,6 +1,5 @@
 // ==UserScript==
 // @name          TagPro Auto Chat
-// @namespace     Dr. Holmes
 // @description   Auto chats assigned messages when a specific event occurs in game.
 // @include       http://tagpro-*.koalabeast.com*
 // @include       http://tangent.jukejuice.com* 

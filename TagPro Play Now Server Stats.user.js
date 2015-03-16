@@ -2,7 +2,6 @@
 // @name       		Play Now Server Stats
 // @version    		0.1
 // @include      	http://*koalabeast.com/
-// @include       http://*newcompte.fr/
 // @description  	Show stats of current server on Play Now button
 // @author        Dr. Holmes
 // ==/UserScript==
@@ -14,7 +13,7 @@ function getStats(e) {
         e.find("span").text("Ping: "+i.ping+", Players: "+i.players+(i.playerCapacity?"/"+i.playerCapacity:"")); 
     },error:function(){
         e.find("span").text("error getting stats.");
-    }})
+    }});
 }
 
 getStats($('#play'));

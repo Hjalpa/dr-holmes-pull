@@ -172,7 +172,7 @@ $(window).ready(function(){
 			  	color: '#FF0000',
 			  	display: 'none',
 			  	textAlign: 'center',
-			  	fontSize: '28px',
+			  	fontSize: '20px',
 			  	fontWeight: 'bold'
 			}
 			$text = $('<span/>').text('Added').css(textCSS);

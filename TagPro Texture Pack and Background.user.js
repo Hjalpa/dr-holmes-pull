@@ -13,6 +13,8 @@ var Transparent_Background = true;
 
 ///////////////////////////////////////////
 
+var Transparent_Background = true;
+
 var texturePack = getTexture();
 if (tagpro.loadAssets){
     tagpro.loadAssets({
@@ -26,7 +28,7 @@ if (tagpro.loadAssets){
 }
 
 $(window).ready(function(){
-	if (window.location.port){
+	if (window.location.port && Transparent_Background){
        	var oldCanvas = $(tagpro.renderer.canvas);
        	var newCanvas = $('<canvas id="viewport" width="1280" height="800"></canvas>');
        	oldCanvas.after(newCanvas);
@@ -43,7 +45,7 @@ $(window).ready(function(){
        	$('div.flag').css('backgroundImage', 'url('+texturePack.tiles+')');
        	$('div.goal').css('backgroundImage', 'url('+texturePack.tiles+')');
 
-       	var	image = null,
+       	var	image = 'tiles',
 			$ball = $('div.flag-carrier');
 
 		var dropContainerCSS = {
@@ -106,6 +108,9 @@ $(window).ready(function(){
 			.append($table)
 			.append($drop);
 
+		$('.drop.container').find('table th:eq(0)').css('opacity','0.7');
+		$drop.css('background', 'url('+texturePack[image]+') center / 100% no-repeat');
+
 
 		$ball
 			.mousedown(function(){
@@ -134,8 +139,9 @@ $(window).ready(function(){
 			});
 
 		$('.drop.container').find('table th').click(function(){
+			$(this).css('opacity','0.7');
 			image = $(this).attr('value');
-			$drop.css('background', 'url('+texturePack[image]+') center / 100% no-repeat')
+			$drop.css('background', 'url('+texturePack[image]+') center / 100% no-repeat');
 		});
 
 		$('.drop.container th').hover(function(){
@@ -153,6 +159,7 @@ $(window).ready(function(){
 			.click(function(){
 				$(this).parent().slideUp();
 			});
+
 
 		function openDrop(){
 			$('.drop.container').slideDown();

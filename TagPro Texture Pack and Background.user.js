@@ -143,9 +143,10 @@ $(window).ready(function(){
 		});
 
 		$('.drop.container th').hover(function(){
+			$('.drop.container th').css('opacity','1');
 			$(this).css('opacity','0.7');
 		}, function(){
-			$(this).css('opacity','1');
+			$('.drop.container th').css('opacity','1');
 		});
 
 		$('.drop.container a')

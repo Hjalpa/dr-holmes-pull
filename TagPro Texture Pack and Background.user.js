@@ -231,7 +231,7 @@ $(window).ready(function(){
 					console.log(image);
 					$drop.css('background', 'url('+texturePack[image]+') center / 100% no-repeat')
 				});
-			},1200);
+			},900);
 		}
 
 		function setCookie(name, value){

@@ -10,10 +10,8 @@
 
 var Transparent_Background = true;
 
-
 ///////////////////////////////////////////
 
-var Transparent_Background = true;
 
 var texturePack = getTexture();
 if (tagpro.loadAssets){

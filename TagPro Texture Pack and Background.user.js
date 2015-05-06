@@ -58,7 +58,6 @@ $(window).ready(function(){
 	});
     
    	if (!window.location.port){
-   		console.log(window.location.pathname);
    		var texturePack = getTexture();
 
        	$('div.flag-carrier').css('backgroundImage', 'url('+texturePack.tiles+')');
@@ -228,7 +227,6 @@ $(window).ready(function(){
 			setTimeout(function(){
 				$text.fadeOut(function(){
 					$text.remove();
-					console.log(image);
 					$drop.css('background', 'url('+texturePack[image]+') center / 100% no-repeat')
 				});
 			},900);

@@ -106,7 +106,7 @@ $(window).ready(function(){
 			.append($table)
 			.append($drop);
 
-		$('.drop.container').find('table th:eq(0)').css('opacity','0.7');
+		$('.drop.container').find('table th:eq(0)').css({backgroundColor:'#DADFE1',color:'#000000'});
 		$drop.css('background', 'url('+texturePack[image]+') center / 100% no-repeat');
 
 
@@ -137,16 +137,16 @@ $(window).ready(function(){
 			});
 
 		$('.drop.container').find('table th').click(function(){
-			$(this).css('opacity','0.7');
+			$('.drop.container table th').css({backgroundColor:'#535353',color:'#ffffff'});
+			$(this).css({backgroundColor:'#DADFE1',color:'#000000'});
 			image = $(this).attr('value');
 			$drop.css('background', 'url('+texturePack[image]+') center / 100% no-repeat');
 		});
 
 		$('.drop.container th').hover(function(){
-			$('.drop.container th').css('opacity','1');
 			$(this).css('opacity','0.7');
 		}, function(){
-			$('.drop.container th').css('opacity','1');
+			$(this).css('opacity','1');
 		});
 
 		$('.drop.container a')

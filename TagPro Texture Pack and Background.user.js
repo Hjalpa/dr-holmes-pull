@@ -13,37 +13,59 @@ var Transparent_Background = true;
 ///////////////////////////////////////////
 
 
-var texturePack = getTexture();
-if (tagpro.loadAssets){
-    tagpro.loadAssets({
-        "tiles": texturePack.tiles,
-        "speedpad": texturePack.speedpad,
-        "speedpadRed": texturePack.speedpadRed,
-        "speedpadBlue": texturePack.speedpadBlue,
-        "portal": texturePack.portal,
-        "splats": texturePack.splats
-    });
-}
+(function(){
+	var Texture_Pack = JSON.parse(getCookie('texturePack'));
+
+	if (tagpro.loadAssets){
+	    tagpro.loadAssets({
+	        "tiles": Texture_Pack.tiles,
+	        "speedpad": Texture_Pack.speedpad,
+	        "speedpadRed": Texture_Pack.speedpadRed,
+	        "speedpadBlue": Texture_Pack.speedpadBlue,
+	        "portal": Texture_Pack.portal,
+	        "splats": Texture_Pack.splats
+	    });
+	}
+
+	$('html').css('backgroundImage', "url('"+Texture_Pack.wallpaper+"')");
+    $('body').append('<div style="position:fixed; width: 100%; height:100%; opacity:0.4; background-color:black;top:0px;left:0px;z-index:-1"></div>');
+
+	function getCookie(cname){
+		var name = cname + "=";
+	    var ca = document.cookie.split(';');
+	    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+	    }
+	    return false;
+	}
+})();
 
 $(window).ready(function(){
-	if (window.location.port && Transparent_Background){
-       	var oldCanvas = $(tagpro.renderer.canvas);
-       	var newCanvas = $('<canvas id="viewport" width="1280" height="800"></canvas>');
-       	oldCanvas.after(newCanvas);
-       	oldCanvas.remove();
-       	tagpro.renderer.canvas = newCanvas.get(0);
-       	tagpro.renderer.options.transparent = true;
-       	tagpro.renderer.renderer = tagpro.renderer.createRenderer();
-       	tagpro.renderer.resizeAndCenterView();
-       	newCanvas.show();
-   	}
+	tagpro.ready(function(){
+		if (window.location.port && Transparent_Background){
+	       	var oldCanvas = $(tagpro.renderer.canvas);
+	       	var newCanvas = $('<canvas id="viewport" width="1280" height="800"></canvas>');
+	       	oldCanvas.after(newCanvas);
+	       	oldCanvas.remove();
+	       	tagpro.renderer.canvas = newCanvas.get(0);
+	       	tagpro.renderer.options.transparent = true;
+	       	tagpro.renderer.renderer = tagpro.renderer.createRenderer();
+	       	tagpro.renderer.resizeAndCenterView();
+	       	newCanvas.show();
+	   	}
+	});
     
-   	if (window.location.pathname == '/'){
+   	if (!window.location.port){
+   		console.log(window.location.pathname);
+   		var texturePack = getTexture();
+
        	$('div.flag-carrier').css('backgroundImage', 'url('+texturePack.tiles+')');
        	$('div.flag').css('backgroundImage', 'url('+texturePack.tiles+')');
        	$('div.goal').css('backgroundImage', 'url('+texturePack.tiles+')');
 
-       	var	image = 'tiles',
+		var	image = 'tiles',
 			$ball = $('div.flag-carrier');
 
 		var dropContainerCSS = {
@@ -167,7 +189,26 @@ $(window).ready(function(){
 		function setTexture(image, url){
 			texturePack[image] = url;
 			localStorage.setItem('texturePack', JSON.stringify(texturePack));
+			setCookie('texturePack', JSON.stringify(texturePack));
 			confirmText();
+		}
+
+		function getTexture(){
+			var texture = JSON.parse(localStorage.getItem('texturePack'));
+			if (!texture){
+				texture = {
+					"tiles": "/images/tiles.png",
+			        "speedpad": "/images/speedpad.png",
+			        "speedpadRed": "/images/speedpadred.png",
+			        "speedpadBlue": "/images/speedpadblue.png",
+			        "portal": "/images/portal.png",
+			        "splats": "/images/splats.png",
+			        "wallpaper": "/images/background.jpg"
+				};
+				localStorage.setItem('texturePack', JSON.stringify(texture));
+			}
+			setCookie('texturePack', JSON.stringify(texture));
+			return texture;
 		}
 
 		function confirmText(){
@@ -192,25 +233,9 @@ $(window).ready(function(){
 				});
 			},1500);
 		}
-  	}
-    
-    $('html').css('backgroundImage', "url('"+texturePack.wallpaper+"')");
-    $('body').append('<div style="position:fixed; width: 100%; height:100%; opacity:0.4; background-color:black;top:0px;left:0px;z-index:-1"></div>');
-});
 
-function getTexture(){
-	var texture = JSON.parse(localStorage.getItem('texturePack'));
-	if (!texture){
-		texture = {
-			"tiles": "/images/tiles.png",
-	        "speedpad": "/images/speedpad.png",
-	        "speedpadRed": "/images/speedpadred.png",
-	        "speedpadBlue": "/images/speedpadblue.png",
-	        "portal": "/images/portal.png",
-	        "splats": "/images/splats.png",
-	        "wallpaper": "/images/background.jpg"
-		};
-		localStorage.setItem('texturePack', JSON.stringify(texture));
-	}
-	return texture;
-}
+		function setCookie(name, value){
+			document.cookie = name + '=' + value;
+		}
+  	}
+});

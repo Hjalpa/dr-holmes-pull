@@ -20,7 +20,6 @@ var Transparent_Background = true;
 // Actual texture pack and wallpaper replacement
 (function(){
     var Texture_Pack = JSON.parse(GM_getValue('texturePack', 'false'));
-    console.log(Texture_Pack);
     if (Texture_Pack){
         if (tagpro.loadAssets){
             tagpro.loadAssets({

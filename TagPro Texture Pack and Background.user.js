@@ -35,17 +35,17 @@ var Transparent_Background = true;
     }
     tagpro.ready(function(){
     	if (window.location.port && Transparent_Background){
-+       	var oldCanvas = $(tagpro.renderer.canvas);
-+       	var newCanvas = $('<canvas id="viewport" width="1280" height="800"></canvas>');
-+       	oldCanvas.after(newCanvas);
-+       	oldCanvas.remove();
-+       	tagpro.renderer.canvas = newCanvas.get(0);
-+       	tagpro.renderer.options.transparent = true;
-+       	tagpro.renderer.renderer = tagpro.renderer.createRenderer();
-+       	tagpro.renderer.resizeAndCenterView();
-+       	newCanvas.show();
-+   	}
-    })
+	       	var oldCanvas = $(tagpro.renderer.canvas);
+	      	var newCanvas = $('<canvas id="viewport" width="1280" height="800"></canvas>');
+      		oldCanvas.after(newCanvas);
+       		oldCanvas.remove();
+	  	tagpro.renderer.canvas = newCanvas.get(0);
+       		tagpro.renderer.options.transparent = true;
+	      	tagpro.renderer.renderer = tagpro.renderer.createRenderer();
+       		tagpro.renderer.resizeAndCenterView();
+	       	newCanvas.show();
+   	}
+    });
 })();
 
 // Not in game

@@ -259,7 +259,7 @@ $(window).ready(function(){
 				var texturePackTemp = JSON.parse(JSON.stringify(texturePack));
 				delete texturePackTemp['wallpaper'];
 				savedTextures[name] = texturePackTemp;
-				if (byteLength(JSON.stringify(savedTextures)) > 30000000) {
+				if ((JSON.stringify(savedTextures)*2/1024)/1024 > 30) {
                     alert('Storage limit exceeded.');
                     delete savedTextures[name];
                 }
@@ -267,19 +267,7 @@ $(window).ready(function(){
                     GM_setValue('savedTextures', JSON.stringify(savedTextures));
                     createPreview(name);
                 }
-                
-                function byteLength(str) {
-                    // returns the byte length of an utf8 string
-                    var s = str.length;
-                    for (var i=str.length-1; i>=0; i--) {
-                        var code = str.charCodeAt(i);
-                        if (code > 0x7f && code <= 0x7ff) s++;
-                        else if (code > 0x7ff && code <= 0xffff) s+=2;
-                        if (code >= 0xDC00 && code <= 0xDFFF) i--; //trail surrogate
-                    }
-                    return s;
-                }
-			}
+			} 
 		}).hover(function(){
 			$(this).css('opacity', '0.8');
 		}, function(){

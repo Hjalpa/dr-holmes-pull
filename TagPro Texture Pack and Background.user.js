@@ -10,12 +10,17 @@
 // @author        Dr.Holmes & ballparts
 // ==/UserScript==
 
+/////// SET TO EITHER TRUE OR FALSE /////////
+
 var Transparent_Background = true;
+
+
+/////////////////////////////////////////////
 
 // Actual texture pack and wallpaper replacement
 (function(){
-    var Texture_Pack = GM_getValue('texturePack', false);
-    //console.log(Texture_Pack);
+    var Texture_Pack = JSON.parse(GM_getValue('texturePack', 'false'));
+    console.log(Texture_Pack);
     if (Texture_Pack){
         if (tagpro.loadAssets){
             tagpro.loadAssets({
@@ -33,7 +38,7 @@ var Transparent_Background = true;
 
 // Not in game
 $(window).ready(function(){    
-	if (!window.location.port){
+    if (!window.location.port){
 		var texturePack = getTexture();
 
 	   	$('div.flag-carrier').css('backgroundImage', 'url('+texturePack.tiles+')');
@@ -152,8 +157,7 @@ $(window).ready(function(){
 		$dropZone.css('background', 'url('+texturePack[image]+') center / 100% no-repeat');
 
 		// Add saved textures
-		var savedTextures = JSON.parse(localStorage.getItem('savedTextures'));
-		if (!savedTextures) savedTextures = new Object();
+		var savedTextures = JSON.parse(GM_getValue('savedTextures','{}'));
 		for (i in savedTextures){
 			createPreview(i);
 		}
@@ -243,7 +247,7 @@ $(window).ready(function(){
 				var texturePackTemp = JSON.parse(JSON.stringify(texturePack));
 				delete texturePackTemp['wallpaper'];
 				savedTextures[name] = texturePackTemp;
-				localStorage.setItem('savedTextures', JSON.stringify(savedTextures));
+				GM_setValue('savedTextures', JSON.stringify(savedTextures));
 				createPreview(name);
 			}
 		}).hover(function(){
@@ -261,7 +265,7 @@ $(window).ready(function(){
 				preview.fadeOut(function(){
 					delete savedTextures[preview.attr('value')];
 					preview.remove();
-					localStorage.setItem('savedTextures', JSON.stringify(savedTextures));
+					GM_setValue('savedTextures', JSON.stringify(savedTextures));
 				});			
 			}
 		});
@@ -315,11 +319,11 @@ $(window).ready(function(){
 
 		function setTexture(image, url){
 			texturePack[image] = url;
-			GM_setValue('texturePack', texturePack);
+			GM_setValue('texturePack', JSON.stringify(texturePack));
 		}
 
 		function getTexture(){
-			var textureDefault = {
+			var textureDefault = JSON.stringify(new Object({
 				"tiles": "/images/tiles.png",
 		        "speedpad": "/images/speedpad.png",
 		        "speedpadRed": "/images/speedpadred.png",
@@ -327,8 +331,8 @@ $(window).ready(function(){
 		        "portal": "/images/portal.png",
 		        "splats": "/images/splats.png",
 		        "wallpaper": "/images/background.jpg"
-			};
-			return GM_getValue('texturePack', textureDefault);
+			}));
+			return JSON.parse(GM_getValue('texturePack', textureDefault));
 		}
 
 		function confirmText(){

@@ -1,10 +1,12 @@
 // ==UserScript==
-// @name          TagPro Freedom
-// @namespace     Dr. Holmes
+// @name          TagPro Freedom - 2022 Update
+// @namespace     Dr. Holmes; Hjalpa
 // @description   More freedom to TagPro
-// @include       http://tagpro-*.koalabeast.com*
+// @match        *://*.koalabeast.com/*
+// @match        *://*.jukejuice.com/*
+// @match        *://*.newcompte.fr/*
 // @author        Dr. Holmes
-// @version       0.1
+// @version       0.2
 // ==/UserScript==
 
 tagpro.ready(function(){
@@ -17,7 +19,7 @@ tagpro.ready(function(){
 	
 	var $source = $('<source>');
 	$source.attr('type','audio/mp3');
-	$source.attr('src','http://k003.kiwi6.com/hotlink/lb02cfln0i/hawk_screech_valley-Mike_Koenig-2128875647.mp3');
+	$source.attr('src','https://raw.githubusercontent.com/hjalpa/sounds/main/sounds_eng-00381.mp3');
 	
 	$sound.append($source);
 	$div.append($sound);

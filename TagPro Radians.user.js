@@ -2,12 +2,12 @@
 // @name          TagPro Radians
 // @namespace     Dr. Holmes
 // @description   Convert TagPro degrees into Radians.
-// @include		  http://tagpro-*.koalabeast.com:*
-// @include		  http://tangent.jukejuice.com:*
-// @include       http://*.newcompte.fr:*
-// @author        Dr. Holmes
-// @version       0.1
+// @include	  https://*.koalabeast.com/game*
+// @author        Dr. Holmes, Hjalpa
+// @version       0.11
 // ==/UserScript==
+
+/* globals tagpro */
 
 tagpro.ready(function(){
 	var tr = tagpro.renderer;

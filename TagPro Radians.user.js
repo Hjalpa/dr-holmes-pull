@@ -4,6 +4,8 @@
 // @description   Convert TagPro degrees into Radians.
 // @include	  https://*.koalabeast.com/game*
 // @author        Dr. Holmes, Hjalpa
+// @downloadurl   https://github.com/Hjalpa/dr-holmes-pull/raw/master/TagPro%20Radians.user.js
+// @updateurl     https://github.com/Hjalpa/dr-holmes-pull/raw/master/TagPro%20Radians.user.js
 // @version       0.11
 // ==/UserScript==
 
@@ -29,7 +31,7 @@ tagpro.ready(function(){
 			return;
 		}
 		else {
-			return n.toFixed(4);
+			return n.toFixed(2);
 		}
 	}
 });
